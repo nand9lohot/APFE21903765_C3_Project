@@ -63,12 +63,12 @@ class RestaurantTest {
 
     //<<<<<<<<<<<<<<<<<<<<<<<ORDER TOTAL VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @Test
-    public void should_return_some_total_value_when_order_items_are_selected() {
+    public void should_return_total_value_when_order_items_are_selected() {
         List<Item> items = new ArrayList<>();
         items.add(new Item("Sweet corn soup", 129));
         items.add(new Item("Vegetable lasagne", 269));
         int orderTotal = restaurant.getTotalCost(items);
-        assertEquals(399, orderTotal);
+        assertEquals(398, orderTotal);
     }
 
     @Test
