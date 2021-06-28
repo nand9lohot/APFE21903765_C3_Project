@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +36,6 @@ class RestaurantTest {
         Mockito.when(spyRestaurant.isRestaurantOpen()).thenReturn(false);
         assertFalse(spyRestaurant.isRestaurantOpen());
     }
-
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -58,4 +59,25 @@ class RestaurantTest {
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER TOTAL VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void should_return_some_total_value_when_order_items_are_selected() {
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("Sweet corn soup", 129));
+        items.add(new Item("Vegetable lasagne", 269));
+        int orderTotal = restaurant.getTotalCost(items);
+        assertEquals(399, orderTotal);
+    }
+
+    @Test
+    public void should_return_zero_when_no_order_items_are_selected(){
+        List<Item> items = new ArrayList<>();
+        int orderTotal = restaurant.getTotalCost(items);
+        assertEquals(0,orderTotal);
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER TOTAL VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 }
